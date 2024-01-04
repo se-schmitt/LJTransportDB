@@ -123,6 +123,6 @@ function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/
     return dat
 end
 
-export LJData, RefData, xlsx2refs
+export LJData, RefData, xlsx2refs, load_db
 
 end

@@ -16,10 +16,10 @@ function convert2LJData(in)
     return out
 end
 
-function plot_3D(data;what=data.Y.>0.0,eos="Kolafa")
+function plot_3D(data;what=data.Y.>0.0)
     what_confirmed = data.outlier .== 1
     what_outlier = data.outlier .== 0
-    what_es = data.Y_eos[eos] .< 1e3
+    what_es = data.Y_eos .< 1e3
     [
     PlotData(
         plot="scatter3d",
@@ -53,7 +53,7 @@ function plot_3D(data;what=data.Y.>0.0,eos="Kolafa")
         plot="mesh3d",
         x = data.T[what .&& what_es],
         y = data.ϱ[what .&& what_es],
-        z = data.Y_eos[eos][what .&& what_es],
+        z = data.Y_eos[what .&& what_es],
         color = "grey",
         opacity = 0.5,
         name = "Entropy Scaling",
@@ -100,7 +100,7 @@ function create_data_table(data,refdat)
 end
 
 # Load the database
-print("Loading reference data...")
+print("Loading database...")
 
 const db = load_db()
 const refdata = xlsx2refs()
