@@ -110,7 +110,7 @@ function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/
     dat.ref_id = Int64.(sh_dat[7:end, findfirst(header .== "Source")+1])
     dat.outlier = Bool.(sh_dat[7:end, findfirst(header .== "(0 = Ausreißer)")])
     dat.reg = strip.(string.(sh_dat[7:end, findfirst(header .== "Region")+1]))
-    dat.reg_id = Int64.(sh_dat[7:end, findfirst(header .== "Region")])
+    # dat.reg_id = Int64.(sh_dat[7:end, findfirst(header .== "Region")])
 
     # EOS dependent data
     eos_i = "Kolafa"

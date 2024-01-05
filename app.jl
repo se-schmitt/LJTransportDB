@@ -49,15 +49,47 @@ function plot_3D(data;what=data.Y.>0.0)
         ),
         name = "Outlier",
     ),
-    PlotData(
-        plot="mesh3d",
-        x = data.T[what .&& what_es],
-        y = data.ϱ[what .&& what_es],
-        z = data.Y_eos[what .&& what_es],
-        color = "grey",
-        opacity = 0.5,
-        name = "Entropy Scaling",
-    )
+    (length(unique(data.T[what .&& what_es])) == 1 && length(unique(data.ϱ[what .&& what_es])) == 1) ? 
+        PlotData(
+            plot="scatter3d",
+            x = data.T[what .&& what_es],
+            y = data.ϱ[what .&& what_es],
+            z = data.Y_eos[what .&& what_es],
+            mode="markers",
+            marker = Dict(
+                "size" => 4,
+                "line" => Dict(
+                    "width" => 1,
+                    "color" => "grey", 
+                ),
+                "color" => "white",
+            ),
+            opacity = 1.0,
+            name = "Entropy Scaling",
+        ) :
+    (length(unique(data.T[what .&& what_es])) == 1 || length(unique(data.ϱ[what .&& what_es])) == 1) ?
+        PlotData(
+            plot="scatter3d",
+            x = data.T[what .&& what_es],
+            y = data.ϱ[what .&& what_es],
+            z = data.Y_eos[what .&& what_es],
+            mode="lines",
+            line = Dict(
+                "width" => 4,
+                "color" => "grey", 
+            ),
+            opacity = 1.0,
+            name = "Entropy Scaling",
+        ) :
+        PlotData(
+            plot="mesh3d",
+            x = data.T[what .&& what_es],
+            y = data.ϱ[what .&& what_es],
+            z = data.Y_eos[what .&& what_es],
+            color = "grey",
+            opacity = 0.5,
+            name = "Entropy Scaling",
+        ),
     ]
 end
 
