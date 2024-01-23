@@ -101,23 +101,23 @@ function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/
     header = string.(strip.(header))
 
     # Extract data
-    dat.p = Float64.(sh_dat[7:end, findfirst(header .== "p*")])
-    dat.ϱ = Float64.(sh_dat[7:end, findfirst(header .== "ρ*")])
-    dat.T = Float64.(sh_dat[7:end, findfirst(header .== "T*")])
-    dat.Y = Float64.(sh_dat[7:end, findfirst(header .== "$(sym)")])
-    dat.ΔY = Float64.(sh_dat[7:end, findfirst(header .== "Δ$(sym)")])
-    dat.ref = strip.(string.(sh_dat[7:end, findfirst(header .== "Source")]))
-    dat.ref_id = Int64.(sh_dat[7:end, findfirst(header .== "Source")+1])
-    dat.outlier = Bool.(sh_dat[7:end, findfirst(header .== "(0 = Ausreißer)")])
-    dat.reg = strip.(string.(sh_dat[7:end, findfirst(header .== "Region")+1]))
-    # dat.reg_id = Int64.(sh_dat[7:end, findfirst(header .== "Region")])
+    dat.p = Float64.(sh_dat[:, findfirst(header .== "p*")])
+    dat.ϱ = Float64.(sh_dat[:, findfirst(header .== "ρ*")])
+    dat.T = Float64.(sh_dat[:, findfirst(header .== "T*")])
+    dat.Y = Float64.(sh_dat[:, findfirst(header .== "$(sym)")])
+    dat.ΔY = Float64.(sh_dat[:, findfirst(header .== "Δ$(sym)")])
+    dat.ref = strip.(string.(sh_dat[:, findfirst(header .== "Source")]))
+    dat.ref_id = Int64.(sh_dat[:, findfirst(header .== "Source")+1])
+    dat.outlier = Bool.(sh_dat[:, findfirst(header .== "(0 = Ausreißer)")])
+    dat.reg = strip.(string.(sh_dat[:, findfirst(header .== "Region")+1]))
+    # dat.reg_id = Int64.(sh_dat[:, findfirst(header .== "Region")])
 
     # EOS dependent data
     eos_i = "Kolafa"
     cols = findall(occursin.(lowercase(eos_i), lowercase.(header)))
-    dat.Pj = sh_dat[7:end, cols[1]]
-    dat.MAD = sh_dat[7:end, cols[2]]
-    dat.Y_eos = sh_dat[7:end, cols[3]]
+    dat.Pj = sh_dat[:, cols[1]]
+    dat.MAD = sh_dat[:, cols[2]]
+    dat.Y_eos = sh_dat[:, cols[3]]
     dat.δY_eos = (dat.Y .- dat.Y_eos) ./ dat.Y_eos
 
     return dat

@@ -19,7 +19,7 @@ end
 function plot_3D(data;what=data.Y.>0.0)
     what_confirmed = data.outlier .== 1
     what_outlier = data.outlier .== 0
-    what_es = data.Y_eos .< 1e3
+    what_es = data.Y_eos .< 1e3 .&& log10.(abs.(data.Y_eos)) .> -10.0
     [
     PlotData(
         plot="scatter3d",
@@ -118,7 +118,9 @@ end
 function create_data_table(data,refdat)
     refs = sort(unique(data.ref))
     what = [findfirst(iref .== refdat.abbreviation) for iref in refs]
-    in.(refdata.abbreviation,Ref(refs))
+    if any(isnothing.(what))
+        error("References not found: ",refs[isnothing.(what)])
+    end
     DataTable(DataFrame(
         "Abbrevation" => refdata.abbreviation[what],
         "Author" => refdata.author[what],
