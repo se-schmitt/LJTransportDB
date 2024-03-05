@@ -130,6 +130,7 @@ function create_data_table(data,refdat)
         "# Data Points" => [sum(data.ref .== iref) for iref in refs],
         "# Outliers" => [sum(data.ref .== iref .&& data.outlier .== 0) for iref in refs],
         "Outliers / %" => [round(sum(data.ref .== iref .&& data.outlier .== 0) / sum(data.ref .== iref) * 100,digits=1) for iref in refs],
+        "T range" => [string(round(minimum(data.T[data.ref .== iref]),digits=2)," - ",round(maximum(data.T[data.ref .== iref]),digits=2)) for iref in refs],
     ))
 end
 
