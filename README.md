@@ -4,12 +4,10 @@
 
 ```julia
 cd("the/app/directory")
-# include("app.jl")
 
 using Genie
 
-Genie.go()
-
+Genie.loadapp()
 up()
 ```
 

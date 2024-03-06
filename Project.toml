@@ -1,3 +1,7 @@
+name = "ljdatabase"
+uuid = "e060b834-f383-4a30-9ddc-d21e438f4627"
+authors = ["Sebastian Schmitt <schmitts@rhrk.uni-kl.de>"]
+
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 GenieFramework = "a59fdf5c-6bf0-4f5d-949c-a137c9e2f353"
