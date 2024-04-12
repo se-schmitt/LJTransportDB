@@ -1,0 +1,40 @@
+/* GenieApp CSS */
+#table{
+    width:100%;
+    margin-bottom:0px;
+    font-size: 20px;
+    title: "Test Table";
+}
+#title{
+    font-size:40px;
+    color:rgb(0, 60, 90);
+    font-weight:700;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    width: 50%;
+}
+#select{
+    font-size:20px;
+    color:rgb(0, 60, 90);
+}
+#sectitle{
+    font-size:30px;
+    height:40px;
+    color:#003c5a;
+    font-weight:700;
+}
+#reftab{
+    font-size:20px;
+    height:40px;
+    color:#003c5a;
+    font-weight:700;
+    margin:5px;
+}
+#reftabval{
+    font-size:20px;
+    height:40px;
+    color:#277aa3;
+    font-weight:700;
+    margin:5px;
+}

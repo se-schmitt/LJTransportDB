@@ -148,12 +148,7 @@ println(" done.")
     @out msg = "The average is 0."
     @out props = [:eta, :lambda, :D]
     @out data_3D = [
-        PlotData(
-            x = [0,0],
-            y = [0,0],
-            z = [0,0],
-            mode = "markers",
-        ),
+        PlotData(),
     ]
     @out layout_3D = PlotlyBase.Layout()
     @out refs_select = [""]
@@ -164,12 +159,7 @@ println(" done.")
     @out Tmax = 0.0
     @out rhomin = 0.0
     @out rhomax = 0.0
-    @out table_data = DataTable(DataFrame(
-        "A"=>[1,2,3],
-        "B"=>[11,22,33],
-        "C"=>[111,222,333]
-    ))
-    @out table_columns = ["A","B"]
+    @out table_data = DataTable(DataFrame())
 
     @in db_loaded::Bool = false
     @in load_db = false
