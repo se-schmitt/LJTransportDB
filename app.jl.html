@@ -1,61 +1,65 @@
-<h1>Dashboard for the LJ Transport Database</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./public/style.css">
+</head>
+<body>
+<h1 id="title">Dashboard for the LJ Transport Database</h1>
 <div class="row">
-    <div class="st-col col-12 col-sm st-module">
+    <div class="st-col col-sm st-module">
         <div class="row">
-            <p>
-            </p>
-            <h3 id="ip6x">Choose transport property: </h3>
-            <p></p>
+            <h3 id="select">Choose transport property: </h3>
             <q-select v-model="prop" :options="props" id="isjvp"></q-select>
         </div>
     </div>
     <div class="st-col col-12 col-sm st-module">
         <div class="row">
-            <p>
-            </p>
-            <h3 id="ialxr">Choose reference: </h3>
-            <p></p>
+            <h3 id="select">Choose reference: </h3>
             <q-select v-model="ref" :options="refs_select" id="i1hxb"></q-select>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="st-col col-12 col-sm st-module">
-        <h3>Temperature - Density - {{prop}} - Plot</h3>
+        <h3 id="sectitle">Temperature - Density - {{prop}} - Plot</h3>
         <plotly :data="data_3D" :layout="layout_3D"></plotly>
     </div>
     <div class="st-col col-12 col-sm st-module">
-        <h3 id="iq4rt">Statistics on Ref. &quot;{{ref}}&quot;</h3>
+        <h3 id="sectitle">Statistics on Ref. &quot;{{ref}}&quot;</h3>
         <div class="row">
             <div class="st-col col-12 col-sm st-module">
-                <div id="ikjk6">Number of data points:</div>
-                <div id="iuve1">Number of outliers:</div>
-                <div id="ieoum">Percentage outliers:</div>
+                <div id="reftab">Number of data points:</div>
+                <div id="reftab">Number of outliers:</div>
+                <div id="reftab">Percentage outliers:</div>
             </div>
             <div class="st-col col-12 col-sm st-module">
-                <div id="i5abf"><b>{{N_ref}}</b></div>
-                <div id="i6cv3i">{{N_outlier}}</div>
-                <div id="i8auo3">{{ratio_outlier}} %</div>
+                <div id="reftabval">{{N_ref}}</div>
+                <div id="reftabval">{{N_outlier}}</div>
+                <div id="reftabval">{{ratio_outlier}} %</div>
             </div>
         </div>
         <hr id="null" />
         <div class="row">
             <div class="st-col col-12 col-sm st-module">
-                <div id="i12r9p">T range:</div>
-                <div id="iap2aj">Density range:</div>
+                <div id="reftab"><i>T</i> range:</div>
+                <div id="reftab"><i>&rho;</i> range:</div>
             </div>
             <div class="st-col col-12 col-sm st-module">
-                <div id="iqlao9">{{Tmin}} - {{Tmax}}</div>
-                <div id="iv5yfl">{{rhomin}} - {{rhomax}}</div>
+                <div id="reftabval">{{Tmin}} - {{Tmax}}</div>
+                <div id="reftabval">{{rhomin}} - {{rhomax}}</div>
             </div>
         </div>
-        <h3>
-        </h3>
         <h3></h3>
     </div>
 </div>
 <div class="row">
     <div class="st-col col-12 col-sm st-module">
-        <q-table :data="table_data.data" :columns="table_data.columns" :pagination="20"></q-table>
+        <q-table 
+            :data="table_data.data" 
+            :columns="table_data.columns" 
+            :pagination="40">
+        </q-table>
     </div>
 </div>
+</body>
+</html>

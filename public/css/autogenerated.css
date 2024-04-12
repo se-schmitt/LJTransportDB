@@ -1,1 +1,6 @@
-table{width:100%;border:1px solid #cccccc;margin-bottom:20px;}table td{padding:8px;border:1px solid #cccccc;}#ieoum{font-size:16px;height:40px;color:#003c5a;}#ikjk6{font-size:16px;height:40px;color:#003c5a;}#i5abf{font-size:16px;color:#706fe8;height:40px;}#iuve1{font-size:16px;height:40px;color:#003c5a;}#i6cv3i{font-size:16px;font-weight:700;color:#706fe8;height:40px;}#i8auo3{font-size:16px;font-weight:700;color:#706fe8;height:40px;}#iq4rt{color:#003c5a;}#i12r9p{color:#003c5a;font-size:16px;height:40px;float:none;text-align:left;margin:0 0 0 0;}#iap2aj{color:#003c5a;font-size:16px;height:40px;}#iqlao9{color:#706fe8;font-size:16px;height:40px;float:none;text-align:left;margin:0 0 0 0;font-weight:700;}#iv5yfl{color:#706fe8;font-size:16px;height:40px;float:none;text-align:left;margin:0 0 0 0;font-weight:700;}#isjvp{font-size:20px;}#ip6x{font-size:20px;}#i1hxb{font-size:20px;}#ialxr{font-size:20px;}
+table{width:100%;border:0px solid #cccccc;margin-bottom:0px;}
+#title{font-size:40px;color:rgb(0, 60, 90);font-weight:700;}
+#select{font-size:20px;color:rgb(0, 60, 90);}
+#sectitle{font-size:30px;height:40px;color:#003c5a;font-weight:700;}
+#reftab{font-size:20px;height:40px;color:#003c5a;font-weight:700;margin:5px;}
+#reftabval{font-size:20px;height:40px;color:#277aa3;font-weight:700;margin:5px;}
