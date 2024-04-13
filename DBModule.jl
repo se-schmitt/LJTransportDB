@@ -35,7 +35,7 @@ mutable struct RefData
 end
 
 # Function to extract literature data from the Excel database
-function xlsx2refs(;path="C:/Daten/Seafile/LJ_Transport/literature_data/data/Data_Paper_All_Data FINAL.xlsx")
+function xlsx2refs(;path="Data/LJTransportDB_demo.xlsx")
     # Read data
     xf = XLSX.readxlsx(path)
     sh = xf["Sources"][:]
@@ -79,7 +79,7 @@ function load_db()
 end
 
 # Function to extract the data from the Excel database for one property
-function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/data/Data_Paper_All_Data FINAL.xlsx")
+function xlsx2data(prop,sym;path="Data/LJTransportDB_demo.xlsx")
     # Read data
     xf = XLSX.readxlsx(path)
     sh = xf[prop][:]
@@ -89,14 +89,14 @@ function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/
     dat = LJData()
 
     # Settings
-    i_row_header = 6
+    i_row_header = 1
 
     sh_dat = sh[i_row_header+1:end, :]
     sh_dat = sh_dat[(!).(all(ismissing.(sh_dat),dims=2))[:],1:end]
     sh_dat[ismissing.(sh_dat)] = NaN.*ones(sum(ismissing.(sh_dat)))
     sh_dat[sh_dat .== "Inf"] = Inf .* ones(sum(sh_dat .== "Inf"))
     sh_dat[sh_dat .== "NaN"] = NaN .* ones(sum(sh_dat .== "NaN"))
-    header = sh[6,:]
+    header = sh[i_row_header,:]
     header[ismissing.(header)] = repeat([""], length(header[ismissing.(header)]))
     header = string.(strip.(header))
 
@@ -113,11 +113,9 @@ function xlsx2data(prop,sym;path="C:/Daten/Seafile/LJ_Transport/literature_data/
     # dat.reg_id = Int64.(sh_dat[:, findfirst(header .== "Region")])
 
     # EOS dependent data
-    eos_i = "Kolafa"
-    cols = findall(occursin.(lowercase(eos_i), lowercase.(header)))
-    dat.Pj = sh_dat[:, cols[1]]
-    dat.MAD = sh_dat[:, cols[2]]
-    dat.Y_eos = sh_dat[:, cols[3]]
+    dat.Pj = sh_dat[:, findfirst(header .== "Pj")]
+    dat.MAD = sh_dat[:, findfirst(header .== "MAD")]
+    dat.Y_eos = sh_dat[:, findfirst(header .== "$(sym)_EOS")]
     dat.δY_eos = (dat.Y .- dat.Y_eos) ./ dat.Y_eos
 
     return dat
