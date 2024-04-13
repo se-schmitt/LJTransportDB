@@ -4,9 +4,15 @@ Simple dashboard to work with a database containing compiled transport property 
 
 ## How to run app
 
-```julia
-cd("/directory/to/LJTransportDB")
+Download the repository and start Julia.
 
+```julia
+cd("/directory/to/LJTransportDB")       # if not already in the directory
+
+# Activate project and install all dependencies
+import Pkg; Pkg.activate("./"); Pkg.instantiate()
+
+# Then load Genie and start the app
 using Genie
 
 Genie.loadapp()
