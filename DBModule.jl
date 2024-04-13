@@ -35,7 +35,7 @@ mutable struct RefData
 end
 
 # Function to extract literature data from the Excel database
-function xlsx2refs(;path="Data/LJTransportDB_demo.xlsx")
+function xlsx2refs(;path="./data/LJTransportDB_demo.xlsx")
     # Read data
     xf = XLSX.readxlsx(path)
     sh = xf["Sources"][:]
@@ -79,7 +79,7 @@ function load_db()
 end
 
 # Function to extract the data from the Excel database for one property
-function xlsx2data(prop,sym;path="Data/LJTransportDB_demo.xlsx")
+function xlsx2data(prop,sym;path="./data/LJTransportDB_demo.xlsx")
     # Read data
     xf = XLSX.readxlsx(path)
     sh = xf[prop][:]
